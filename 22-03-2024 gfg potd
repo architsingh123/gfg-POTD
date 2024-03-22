@@ -1,0 +1,22 @@
+void solve(Node* root,map<int,int> &mp ,int level){
+     
+     if(!root) return;
+     
+     mp[level]+=root->data;
+     solve(root->left,mp,level+1);
+     solve(root->right,mp,level);
+     
+    return;
+}
+    public:
+    vector <int> diagonalSum(Node* root) {
+       vector<int> ans;
+       map<int,int> mp;
+       
+       solve(root,mp,0);
+       for(auto i:mp){
+           ans.push_back(i.second);
+       }
+       return ans;
+       
+    }
